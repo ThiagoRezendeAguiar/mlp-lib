@@ -1,6 +1,3 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <time.h>
 #include "matrix.h"
 
 typedef double (*op_func)(double, double);
@@ -82,7 +79,7 @@ Matrix* matrix_create(int num_rows, int num_cols) {
     return m;
 }
 
-void matrix_destroy(Matrix* m) {
+void matrix_free(Matrix* m) {
     if (m == NULL || m->data == NULL) return;
 
     for (int i = 0; i < m->num_rows; i++) {
@@ -143,7 +140,7 @@ Matrix* matrix_transpose(const Matrix* m) {
 
     for (int i = 0; i < m->num_rows; i++) {
         for (int j = 0; j < m->num_cols; j++) {
-           mt->data[i][j] = m->data[j][i];
+           mt->data[j][i] = m->data[i][j];
         } 
     } 
 

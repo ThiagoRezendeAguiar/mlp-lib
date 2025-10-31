@@ -1,15 +1,21 @@
 #ifndef MATRIX_H
 #define MATRIX_H
 
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
 typedef struct {
    int num_rows;
    int num_cols;
    double** data;
 } Matrix;
 
+typedef Matrix Vector;
+
 Matrix* matrix_create(int num_rows, int num_cols);
 
-void matrix_destroy(Matrix* m);
+void matrix_free(Matrix* m);
 
 void matrix_randomize(Matrix* m, int seed);
 
